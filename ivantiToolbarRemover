@@ -1,0 +1,54 @@
+// ==UserScript==
+// @name         Remove HTML Node - IVANTI Toolbar Remover
+// @namespace    your_namespace  // Replace with your own unique namespace
+// @version      0.1
+// @description  This script was created to remove some navigation bars when an IVANTI's web based remote desktop site is reached.
+// @author       Your Name  // Replace with your name
+// @match        https://*/dana/html5acc/SparkGateway/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // ID of the div you want to remove
+    const divIdToRemove1 = 'svToolbar';
+    const divIdToRemove2 = 'dsl0';
+
+    function removeDiv() {
+        // Find the div by ID
+        const targetDiv1 = document.getElementById(divIdToRemove1);
+        const targetDiv2 = document.getElementById(divIdToRemove2);
+
+
+        // If the div exists, remove it
+        if (targetDiv1) {
+            targetDiv1.remove();
+        }
+        if (targetDiv2) {
+            targetDiv2.remove();
+        }
+    }
+
+    // Initial check to remove the div if it's already on the page
+    removeDiv();
+
+    // Create a MutationObserver to watch for dynamically added divs
+    const observer = new MutationObserver((mutationsList, observer) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                for (const node of mutation.addedNodes) {
+                    if (node.nodeType === Node.ELEMENT_NODE && node.id === divIdToRemove1) {
+                        node.remove();
+                    }
+                    if (node.nodeType === Node.ELEMENT_NODE && node.id === divIdToRemove2) {
+                        node.remove();
+                    }
+                }
+            }
+        }
+    });
+
+    // Start observing the document body for changes
+    observer.observe(document.body, { childList: true, subtree: true });
+})();
