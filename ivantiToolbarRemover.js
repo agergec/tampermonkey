@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Remove HTML Node - IVANTI Toolbar Remover
 // @namespace    your_namespace  // Replace with your own unique namespace
-// @version      0.1
+// @version      0.3.6
 // @description  This script was created to remove some navigation bars when an IVANTI's web based remote desktop site is reached.
-// @author       Your Name  // Replace with your name
+// @author       Another author
 // @match        https://*/dana/html5acc/SparkGateway/*
 // @grant        none
 // ==/UserScript==
