@@ -39,3 +39,40 @@ No manual intervention is required. Once installed, the specified toolbars will 
 ## Disclaimer
 
 This script is a third-party modification and is not affiliated with or endorsed by IVANTI. Use it at your own discretion.
+Here is the raw Markdown code for your README.md file. You can copy and paste this directly into GitHub.
+Markdown
+
+# Google Meet - Instant View Settings 🎛️
+
+A lightweight userscript that fixes the "buried" view settings in Google Meet. It adds a persistent, native-looking button to the main toolbar that instantly opens the **Adjust View** window, bypassing the nested `(...) -> Change layout` menu.
+
+### 🚀 Features
+
+* **One-Click Access:** Opens the "Adjust View" / "Change Layout" modal instantly.
+* **Smart Lock Mechanism:** Prevents spam-clicking and accidental cascaded windows.
+* **Active State Detection:** The button detects if the settings window is already open and switches to an "Active" (read-only) state.
+* **Native UI Integration:** Designed to match Google Meet's dark theme and button styles perfectly.
+* **Zero Configuration:** Works automatically upon joining a meeting.
+
+### 📦 Installation
+
+1.  Install a userscript manager:
+    * **Chrome/Edge:** [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/)
+    * **Firefox:** [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) or [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
+2.  Create a new script in your manager.
+3.  Copy and paste the code from `script.js` (provided below).
+4.  Save the script and refresh your Google Meet tab.
+
+### 🛠️ How it Works
+
+The script uses a secure `MutationObserver` to detect when the Google Meet toolbar loads. It injects a custom button that programmatically triggers the specific generic events required to open the layout menu, doing so invisibly to the user.
+
+**Smart Lock Logic:**
+* **Click:** Triggers the menu automation.
+* **Processing:** Locks the button to prevent double-clicks.
+* **Open:** Changes button text to `✅ Active` until the user closes the dialog manually.
+
+###  🤝 Contributing
+
+This is a personal utility script. Feel free to fork and improve if Google updates their DOM structure!
+**Disclaimer**: This project is not affiliated with Google or Google Meet. It is a client-side customization script.
